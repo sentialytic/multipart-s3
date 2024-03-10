@@ -1,0 +1,34 @@
+[package]
+name = "multipart-s3"
+version = "0.1.0"
+edition = "2021"
+categories = ["aws-sdk-s3", "multipart", "axum"]
+description = "aws-sdk-s3 client for axum"
+rust-version = "1.66"
+homepage = "https://github.com/sentialytic/multipart-s3"
+keywords = ["multipart", "aws-sdk-s3", "axum"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/sentialytic/multipart-s3"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+
+[features]
+
+
+[dependencies]
+axum = { version = "0.7", features = ["multipart"] }
+aws-config = { version = "1", features = ["behavior-version-latest"] }
+aws-sdk-s3 = "1"
+bytes = "1"
+futures-util = "0.3"
+
+[dev-dependencies]
+dotenvy = "0.15"
+tokio = { version = "1", features = ["full"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
